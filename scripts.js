@@ -1,28 +1,28 @@
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-var renderer = new THREE.WebGLRenderer();
+let scene = new THREE.Scene();
+let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+let renderer = new THREE.WebGLRenderer();
 
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setClearColor(0xdddddd);
 document.body.appendChild(renderer.domElement);
 
-var earth=new THREE.Mesh(
+let earth=new THREE.Mesh(
     new THREE.SphereGeometry(0.5, 32, 32),
     new THREE.MeshPhongMaterial({
-        map: THREE.ImageUtils.loadTexture('2_no_clouds_4k.jpg'),
-        bumpMap: THREE.ImageUtils.loadTexture('elev_bump_4k.jpg'),
+        map: THREE.ImageUtils.loadTexture('images/no_clouds_4k.jpg'),
+        bumpMap: THREE.ImageUtils.loadTexture('images/elev_bump_4k.jpg'),
         bumpScale: 0.005,
-        specularMap: THREE.ImageUtils.loadTexture('water_4k.png'),
+        specularMap: THREE.ImageUtils.loadTexture('images/water_4k.png'),
         specular: new THREE.Color('grey'),
-        alphaMap: THREE.ImageUtils.loadTexture('earthlights1k.jpg')})
+        alphaMap: THREE.ImageUtils.loadTexture('images/earthlights1k.jpg')})
 );
 
 scene.add(earth);
 
 
 scene.add(new THREE.AmbientLight(0x333333));
-var light = new THREE.DirectionalLight(0xffffff, 0.3);
+let light = new THREE.DirectionalLight(0xffffff, 0.3);
 light.position.set(5,7,5);
 scene.add(light);
 
@@ -30,10 +30,10 @@ camera.lookAt(scene.position);
 camera.position.z = 1;
 
 
-var clouds =new THREE.Mesh(
+let clouds =new THREE.Mesh(
     new THREE.SphereGeometry(0.503, 32, 32),
     new THREE.MeshPhongMaterial({
-        map: THREE.ImageUtils.loadTexture('fair_clouds_4k.png'),
+        map: THREE.ImageUtils.loadTexture('images/fair_clouds_4k.png'),
         transparent: true
     })
 );
@@ -41,10 +41,10 @@ var clouds =new THREE.Mesh(
 scene.add(clouds);
 
 
-var dome=new THREE.Mesh(
+let dome=new THREE.Mesh(
     new THREE.SphereGeometry(20, 64, 64),
     new THREE.MeshBasicMaterial({
-        map: THREE.ImageUtils.loadTexture('scuqxfufnurjnphlgnir.jpg'),
+        map: THREE.ImageUtils.loadTexture('images/space_texture.jpg'),
         side: THREE.BackSide
     })
 );
@@ -54,13 +54,13 @@ dome.rotation.y=180;
 scene.add(dome);
 
 
-var mouse	= {x : 0, y : 0};
+let mouse	= {x : 0, y : 0};
 document.addEventListener('mousemove', function(event){
     mouse.x	= (event.clientX / window.innerWidth ) - 0.5;
     mouse.y	= (event.clientY / window.innerHeight) - 0.5;
 }, false);
 
-var onRenderFcts= [];
+let onRenderFcts= [];
 onRenderFcts.push(function(delta, now){
     earth.rotation.y += 1/32 * delta;
 });
@@ -83,7 +83,7 @@ onRenderFcts.push(function(){
 
 
 
-var lastTimeMsec= null;
+let lastTimeMsec= null;
 //function render() {
 
 function animate(nowMsec){
@@ -91,7 +91,7 @@ function animate(nowMsec){
 
     requestAnimationFrame(animate);
     lastTimeMsec	= lastTimeMsec || nowMsec-1000/60;
-    var deltaMsec	= Math.min(200, nowMsec - lastTimeMsec);
+    let deltaMsec	= Math.min(200, nowMsec - lastTimeMsec);
     lastTimeMsec	= nowMsec;
     // call each update function
     onRenderFcts.forEach(function(onRenderFct){
