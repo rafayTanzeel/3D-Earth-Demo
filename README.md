@@ -2,5 +2,4 @@
 
 A small 3D app I made using three.js
 
-Clone the repo
-Run index.html to preview
+Preview: https://three-d-web-earth.herokuapp.com/
