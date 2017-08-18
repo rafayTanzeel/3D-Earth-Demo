@@ -1,0 +1,23 @@
+{
+  "name": "3d-earth-demo",
+  "version": "1.0.0",
+  "description": "A interactive 3d earth using three.js",
+  "main": "index.js",
+  "scripts": {
+	"start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafayTanzeel/3D-Earth-Demo.git"
+  },
+  "author": "Rafay Tanzeel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rafayTanzeel/3D-Earth-Demo/issues"
+  },
+  "homepage": "https://github.com/rafayTanzeel/3D-Earth-Demo#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
